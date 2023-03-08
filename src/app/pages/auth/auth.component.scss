@@ -1,0 +1,33 @@
+@import "./../../app.component.scss";
+
+.main-container {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color: $color-green;
+}
+
+.auth-container {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.col {
+    padding: 10% 5%;
+}
+
+.left-side {
+    background-color: $color-dark-green;
+    color: $color-white;
+}
+
+.right-side {
+    background-color: $color-white;
+}
+
+.right-side .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}

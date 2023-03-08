@@ -9,12 +9,12 @@ import "./interfaces/error.interfaces"
 import "./interfaces/user.interfaces"
 
 // Pages
-import { LoginComponent } from './pages/login/login.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    AuthComponent
   ],
   imports: [
     BrowserModule,
