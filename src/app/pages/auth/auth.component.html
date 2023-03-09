@@ -11,27 +11,32 @@
             </div>
             <div class="col right-side text-start">
                <div class="header">
-                    <h1>{{ labels[type].title }}</h1>
+                    <div>
+                        <h1>{{ labels[type].title }}</h1>
+                        <div [hidden]="!formError" class="error-label">
+                            {{ formError?.error }}
+                        </div>
+                    </div>
                     <a href="#" (click)="switchType()">{{ labels[type].linkTo }}</a>
                </div>
 
-                <form>
+                <form [formGroup]="authForm" >
                     <div class="mb-3" [hidden]="type == 'login'">
-                        <label for="exampleFormControlInput0" class="form-label">Your name</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput0"
+                        <label for="name" class="form-label">Your name</label>
+                        <input formControlName="name" type="text" class="form-control" id="name"
                             placeholder="Ash Ketchum">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                        <label for="email" class="form-label">Email address</label>
+                        <input formControlName="email" type="email" class="form-control" id="email"
                             placeholder="name@example.com">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="******">
+                        <label for="password" class="form-label">Password</label>
+                        <input formControlName="password" type="password" class="form-control" id="password" placeholder="******">
                     </div>
                     <div class="mb-3 d-grid gap-2">
-                        <button type="button" class="btn btn-primary">{{ labels[type].button }}</button>
+                        <button (click)="submitForm()" type="button" class="btn btn-primary">{{ labels[type].button }}</button>
                     </div>
                 </form>
             </div>
