@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
-import { AuthService } from "src/app/services/auth.services";
+import { SessionService } from "src/app/services/session.services";
 import { ApiService } from "src/app/services/api.services";
 
 type authType = "login" | "register"
@@ -13,7 +13,7 @@ type authType = "login" | "register"
 })
 export class AuthComponent {
     constructor(
-        private authService: AuthService,
+        private sessionService: SessionService,
         private api: ApiService
     ){}
 
@@ -65,6 +65,7 @@ export class AuthComponent {
         this.api.login(currentUser).subscribe({
             next: value => {
                 let data = <IUser>value
+                this.sessionService.storeSession(data)
                 this.formError = undefined
             },
             error: err => {
@@ -79,6 +80,7 @@ export class AuthComponent {
         this.api.register(currentUser).subscribe({
             next: value => {
                 let data = <IUser>value
+                this.sessionService.storeSession(data)
                 this.formError = undefined
             },
             error: err => {

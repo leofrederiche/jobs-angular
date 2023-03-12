@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 
 @Injectable({
-    providedIn: "root"
+    providedIn: "any"
 })
 
-export class AuthService {
+export class SessionService {
     private authKey:string = "jobs-web-auth";
 
     public isLogged(): boolean {

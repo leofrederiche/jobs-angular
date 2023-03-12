@@ -12,11 +12,13 @@ import "src/app/interfaces/user.interfaces"
 
 // Pages
 import { AuthComponent } from './pages/auth/auth.component';
+import { JobsIndexComponent } from "./pages/jobs-index/jobs-index.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    JobsIndexComponent
   ],
   imports: [
     BrowserModule,
