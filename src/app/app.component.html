@@ -1,1 +1,10 @@
+<!-- As a heading -->
+<nav class="navbar bg-body-tertiary" [hidden]="!sessionService.isLogged()">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">{{ title }}</span>
+
+        <button (click)="logout()" class="btn btn-outline-danger">Logout</button>
+    </div>
+</nav>
+
 <router-outlet></router-outlet>

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { SessionService } from "src/app/services/session.services";
 import { ApiService } from "src/app/services/api.services";
+import { Router } from "@angular/router";
 
 type authType = "login" | "register"
 
@@ -14,8 +15,15 @@ type authType = "login" | "register"
 export class AuthComponent {
     constructor(
         private sessionService: SessionService,
-        private api: ApiService
-    ){}
+        private api: ApiService,
+        private router: Router
+    ) { }
+
+    ngOnInit() {
+        if (this.sessionService.isLogged()) {
+            this.router.navigate(["jobs"])
+        }
+    }
 
     public authForm = new FormGroup({
         id: new FormControl<string>(''),
@@ -24,8 +32,8 @@ export class AuthComponent {
         password: new FormControl<string>('')
     })
 
-    public type:authType = "login";
-    public formError:IError | undefined;
+    public type: authType = "login";
+    public formError: IError | undefined;
 
     public labels = {
         "login": {
@@ -41,7 +49,7 @@ export class AuthComponent {
         }
     }
 
-    public switchType () {
+    public switchType() {
         if (this.type == "login") {
             this.type = "register"
         } else {
@@ -60,13 +68,14 @@ export class AuthComponent {
     }
 
     private signin() {
-        let currentUser:IUser = <IUser>this.authForm.value
-        
+        let currentUser: IUser = <IUser>this.authForm.value
+
         this.api.login(currentUser).subscribe({
             next: value => {
                 let data = <IUser>value
                 this.sessionService.storeSession(data)
                 this.formError = undefined
+                this.router.navigate(["jobs"])
             },
             error: err => {
                 this.formError = { error: err.error.error }
@@ -75,7 +84,7 @@ export class AuthComponent {
     }
 
     private register() {
-        let currentUser:IUser = <IUser>this.authForm.value
+        let currentUser: IUser = <IUser>this.authForm.value
 
         this.api.register(currentUser).subscribe({
             next: value => {

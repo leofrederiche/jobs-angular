@@ -1,1 +1,19 @@
-<h1>Jobs List</h1>
+<div class="header">
+    <div class="container-sm">
+        <h1 class="title">{{ title }}</h1>
+        <p class="subtitle">{{ subtitle }}</p>
+    </div>
+</div>
+
+<div class="content">
+    <div class="card container-sm">
+        <div class="card mt-2 mb-2" *ngFor="let job of jobs">
+            <h5 class="card-header">{{ job.occupation }}</h5>
+            <div class="card-body">
+                <h6 class="card-title">{{ job.company }}</h6>
+                <p class="card-text">{{ job.description }}</p>
+                <a [routerLink]="['/jobs-details', job.id]" class="btn">Details</a>
+            </div>
+        </div>
+    </div>
+</div>

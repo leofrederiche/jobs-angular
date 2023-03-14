@@ -1,0 +1,47 @@
+<div class="header">
+    <div class="container-sm">
+        <h1 class="title">{{ title }}</h1>
+        <p class="subtitle">{{ subtitle }}</p>
+    </div>
+</div>
+
+<div class="content container-sm">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="mb-5">{{ job.occupation }}</h1>
+
+            <div class="mb-4">
+                <b class="mb-3">Job Information</b>
+            </div>
+
+            <div class="mb-3">
+                <label>Company</label>
+                <p>{{ job.company }}</p>
+            </div>
+
+            <div class="mb-3">
+                <label>Role Type</label>
+                <p>{{ job.role }}</p>
+            </div>
+
+            <div class="mb-3">
+                <label>Salary</label>
+                <p>$ {{ job.salary }}</p>
+            </div>
+
+            <div class="mb-3">
+                <label>Remote</label>
+                <p>{{ job.remote }}</p>
+            </div>
+
+            <div class="mb-3">
+                <label>Job Description</label>
+                <p>{{ job.description }}</p>
+            </div>
+
+            <div class="mb-3">
+                <a [routerLink]="['/jobs']" class="btn btn-outline-dark">Back</a>
+            </div>
+        </div>
+    </div>
+</div>

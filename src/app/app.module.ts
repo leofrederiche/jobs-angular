@@ -9,16 +9,21 @@ import { AppComponent } from './app.component';
 // Interfaces
 import "src/app/interfaces/error.interfaces"
 import "src/app/interfaces/user.interfaces"
+import "src/app/interfaces/jobs.interface"
 
 // Pages
 import { AuthComponent } from './pages/auth/auth.component';
 import { JobsIndexComponent } from "./pages/jobs-index/jobs-index.component";
+import { JobsShowComponent } from './pages/jobs-show/jobs-show.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     AuthComponent,
-    JobsIndexComponent
+
+    JobsIndexComponent,
+    JobsShowComponent
   ],
   imports: [
     BrowserModule,
